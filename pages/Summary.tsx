@@ -13,8 +13,7 @@ const Summary: React.FC<Props> = ({ user }) => {
   const [items, setItems] = useState<MasterItem[]>([]);
   const navigate = useNavigate();
   
-  // Filters
-  const [filterQuarter, setFilterQuarter] = useState<string>('ALL'); // Q1, Q2...
+  const [filterQuarter, setFilterQuarter] = useState<string>('ALL');
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
 
   useEffect(() => {
@@ -34,7 +33,6 @@ const Summary: React.FC<Props> = ({ user }) => {
   const getFilteredApps = () => {
     return apps.filter(app => {
       const matchStatus = filterStatus === 'ALL' || app.status === filterStatus;
-      
       let matchQuarter = true;
       if (filterQuarter !== 'ALL') {
         const month = new Date(app.submitDate).getMonth() + 1;
@@ -59,13 +57,11 @@ const Summary: React.FC<Props> = ({ user }) => {
       [AppStatus.APPROVED]: 'bg-green-100 text-green-800',
       [AppStatus.REJECTED]: 'bg-red-100 text-red-800',
     };
-    
     const text = {
       [AppStatus.PENDING]: '審核中',
       [AppStatus.APPROVED]: '已核准',
       [AppStatus.REJECTED]: '已退回',
     };
-
     return (
       <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${styles[status]}`}>
         {text[status]}
@@ -89,7 +85,6 @@ const Summary: React.FC<Props> = ({ user }) => {
         </div>
       </div>
 
-      {/* Filters (Hidden on Print) */}
       {/* High Contrast Color Scheme */}
       <div className="bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-800 no-print">
         <div className="flex flex-wrap gap-4 items-center">
@@ -178,11 +173,9 @@ const Summary: React.FC<Props> = ({ user }) => {
                         <div className="text-xs">[{item?.category}]</div>
                       </td>
                       <td className="px-6 py-4 text-gray-500 print:text-black align-top">
-                         {/* Updated Weld List Format */}
                          <div className="flex flex-col gap-1">
                            {app.items.map((i, idx) => (
                               <div key={idx} className="text-[10px] sm:text-xs font-mono border-b border-gray-100 last:border-0 pb-1 break-all">
-                                 {/* Format: CWP08G-TP-8SM302.001#004-W08 */}
                                  {`${i.drawingNo}#${i.itemSerial || '000'}-${i.weldNo}`}
                               </div>
                            ))}
