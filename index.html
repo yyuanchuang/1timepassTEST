@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WeldTrack Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#E6F7FA',  /* Very Light Teal */
+                100: '#CCEFF5', /* Light Teal */
+                200: '#99DDE8',
+                300: '#66CBDB',
+                400: '#33B8CE',
+                500: '#007A8F', /* Primary Light */
+                600: '#005D6E', /* Primary Brand Color (Transformative Teal) */
+                700: '#004A58',
+                800: '#003842', /* Darker */
+                900: '#00252C', /* Nav Background */
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @media print {
+        @page {
+          size: auto;
+          margin: 10mm;
+        }
+        body, html, #root, .min-h-screen {
+          height: auto !important;
+          overflow: visible !important;
+          background-color: white !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+        /* Ensure tables don't get cut off */
+        table {
+          width: 100% !important;
+          table-layout: auto !important;
+        }
+        /* Force background colors for status badges if browser allows */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "uuid": "https://esm.sh/uuid@^13.0.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50 text-slate-800">
+    <div id="root"></div>
+  </body>
+</html>
